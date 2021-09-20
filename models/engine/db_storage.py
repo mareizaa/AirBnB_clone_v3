@@ -77,6 +77,7 @@ class DBStorage:
             for objs in self.all(cls).values():
                 if objs.id == id:
                     return objs
+            return None
         else:
             return None
 
