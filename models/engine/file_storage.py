@@ -65,14 +65,13 @@ class FileStorage:
             if key in self.__objects:
                 del self.__objects[key]
 
-     def get(self, cls, id):
+    def get(self, cls, id):
         """objects based on class name and id"""
-        if cls is None and id is None:
-            return None
-        else:
+        if cls is not None and id is not None:
             for objs in self.all(cls).values():
                 if objs.id == id:
                     return objs
+        else:
             return None
 
     def count(self, cls=None):
