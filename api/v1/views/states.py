@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """comment"""
 
-from re import S
 from models.state import State
 from models import storage
 from flask import Flask, jsonify, abort, make_response, request
