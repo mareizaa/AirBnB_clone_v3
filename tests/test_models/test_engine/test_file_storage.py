@@ -67,6 +67,20 @@ test_file_storage.py'])
             self.assertTrue(len(func[1].__doc__) >= 1,
                             "{:s} method needs a docstring".format(func[0]))
 
+    def test_get(self):
+        """check if get method returns state"""
+        real_state = storage.get("State", self.state.id)
+        fake_state = storage.get("State", "12345")
+        no_state = storage.get("", "")
+
+        self.assertEqual(real_state, self.state)
+        self.assertNotEqual(fake_state, self.state)
+        self.assertIsNone(no_state)
+
+    def test_count(self):
+        """checks if count method returns correct numbers"""
+        state_count = storage.count("State")
+        city_c
 
 class TestFileStorage(unittest.TestCase):
     """Test the FileStorage class"""
@@ -113,3 +127,18 @@ class TestFileStorage(unittest.TestCase):
         with open("file.json", "r") as f:
             js = f.read()
         self.assertEqual(json.loads(string), json.loads(js))
+
+    def test_get(self):
+        """check if get method returns state"""
+        real_state = storage.get("State", self.state.id)
+        fake_state = storage.get("State", "12345")
+        no_state = storage.get("", "")
+
+        self.assertEqual(real_state, self.state)
+        self.assertNotEqual(fake_state, self.state)
+        self.assertIsNone(no_state)
+
+    def test_count(self):
+        """checks if count method returns correct numbers"""
+        state_count = storage.count("State")
+        city_c
