@@ -33,7 +33,7 @@ def delete_state_obj(state_id):
     state_obj = storage.get('State', state_id)
     if state_obj is None:
         abort(404)
-    state_obj.delete()
+    storage.delete()
     storage.save()
 
     return make_response(jsonify({}), 200)
