@@ -3,7 +3,7 @@
 
 from models.state import State
 from models import storage
-from flask import Response, jsonify, abort, make_response, request
+from flask import Flask, jsonify, abort, make_response, request
 from api.v1.views import app_views
 import json
 
@@ -54,7 +54,7 @@ def create_state_obj(state_id):
 
     return make_response(jsonify(obj.to_dict()), 201)
 
-@app_views.route('/state/<state_id>', strict_slashes=False,
+@app_views.route('/states/<state_id>', strict_slashes=False,
                  methods=['PUT'])
 def update_state_obj(state_id):
     """comments"""
