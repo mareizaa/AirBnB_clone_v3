@@ -35,7 +35,7 @@ def delete_state_obj(state_id):
         abort(404)
     state_obj.delete()
     storage.save()
-    
+
     return make_response(jsonify({}), 200)
 
 
@@ -54,6 +54,7 @@ def create_state_obj(state_id):
 
     return make_response(jsonify(obj.to_dict()), 201)
 
+
 @app_views.route('/states/<state_id>', strict_slashes=False,
                  methods=['PUT'])
 def update_state_obj(state_id):
@@ -66,7 +67,7 @@ def update_state_obj(state_id):
         abort(400, "Not a JSON")
     for key, value in req.items():
         setattr(obj_id, key, value)
-    
+
     storage.save()
 
     return make_response(jsonify(obj_id.to_dict()), 200)
