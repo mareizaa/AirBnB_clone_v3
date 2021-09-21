@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """comment"""
 
+from re import S
 from models.state import State
 from models import storage
 from flask import Flask, jsonify, abort, make_response, request
@@ -33,7 +34,7 @@ def delete_state_obj(state_id):
     state_obj = storage.get('State', state_id)
     if state_obj is None:
         abort(404)
-    storage.delete()
+    state_id.delete()
     storage.save()
 
     return make_response(jsonify({}), 200)
