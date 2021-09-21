@@ -33,15 +33,15 @@ def delete_state_obj(state_id):
     state_obj = storage.get('State', state_id)
     if state_obj is None:
         abort(404)
-    state_id.delete()
+    storage.delete(state_obj)
     storage.save()
 
     return make_response(jsonify({}), 200)
 
 
-@app_views.route('/states/<state_id>', strict_slashes=False,
+@app_views.route('/states', strict_slashes=False,
                  methods=['POST'])
-def create_state_obj(state_id):
+def create_state_obj():
     """comment"""
     req = request.json
     if not req:
