@@ -23,7 +23,7 @@ def state_object(state_id):
     obj = storage.get('State', state_id)
     if obj is None:
         abort(404)
-    return json.dumps(obj.to_dict())
+    return jsonify(obj.to_dict())
 
 
 @app_views.route('/states/<state_id>', strict_slashes=False,
