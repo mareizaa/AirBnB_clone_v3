@@ -1,12 +1,9 @@
 #!/usr/bin/python3
 """comment"""
 
-import re
-from flask.scaffold import F
-from werkzeug.datastructures import V
 from models.state import State
 from models import storage
-from flask import Flask, jsonify, abort, make_response, request
+from flask import Response, jsonify, abort, make_response, request
 from api.v1.views import app_views
 import json
 
@@ -58,7 +55,7 @@ def create_state_obj(state_id):
     return make_response(jsonify(obj.to_dict()), 201)
 
 @app_views.route('/state/<state_id>', strict_slashes=False,
-                 methods=['POST'])
+                 methods=['PUT'])
 def update_state_obj(state_id):
     """comments"""
     obj_id = storage.get('State', state_id)
